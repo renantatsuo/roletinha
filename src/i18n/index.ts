@@ -1,5 +1,5 @@
 import en from "./en.json";
-import ptBR from "./pt-BR.json";
+import ptBR from "./ptBR.json";
 
 export const i18n = (() => {
   const locale = window.navigator.language;

@@ -22,6 +22,9 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
 
+    /* allow json imports */
+    "resolveJsonModule": true,
+
     "paths": {
       "~/*": ["./src/*"]
     }
