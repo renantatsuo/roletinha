@@ -1,0 +1,80 @@
+:root {
+  font-family: system-ui, "SF Pro", "Roboto", "Helvetica Neue", sans-serif;
+  font-size: 100%;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: var(--white);
+  background-color: var(--grey-900);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --white: #fcf5f7;
+  --black: #0a0a0a;
+  --blue: #007aff;
+  --grey-100: #eeeeee;
+  --grey-400: #9a9a9a;
+  --grey-500: #797979;
+  --grey-700: #3a3a3a;
+  --grey-800: #2a2a2a;
+  --grey-900: #1a1a1a;
+  --gold-700: #ffcc00;
+  --gold-900: #cc9900;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+a {
+  font-weight: 500;
+  color: var(--blue);
+  text-decoration: inherit;
+}
+a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+input {
+  font-family: system-ui, "SF Pro", "Roboto", "Helvetica Neue", sans-serif;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    background-color: var(--grey-100);
+  }
+
+  body {
+    color: var(--black);
+  }
+}

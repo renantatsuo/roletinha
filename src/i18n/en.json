@@ -1,0 +1,32 @@
+{
+  "app": {
+    "title": "Wheely"
+  },
+  "lastSpinsBoard": {
+    "title": "Last spins"
+  },
+  "wheely": {
+    "spinButton": {
+      "text": "Spin"
+    }
+  },
+  "wheelySetup": {
+    "title": "SETUP WHEEL",
+    "form": {
+      "label": {
+        "label": "Title",
+        "placeholder": "Ex: rope jumping (10s)"
+      },
+      "weight": {
+        "label": "Weight",
+        "placeholder": "How many times in the wheel"
+      },
+      "color": {
+        "label": "Color"
+      },
+      "submit": {
+        "text": "Add"
+      }
+    }
+  }
+}

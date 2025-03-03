@@ -1,0 +1,32 @@
+{
+  "app": {
+    "title": "Roletinha"
+  },
+  "lastSpinsBoard": {
+    "title": "Ultimas roletadas"
+  },
+  "wheely": {
+    "spinButton": {
+      "text": "Roletar"
+    }
+  },
+  "wheelySetup": {
+    "title": "CONFIGURAR ROLETA",
+    "form": {
+      "label": {
+        "label": "Nome",
+        "placeholder": "Ex: pular corda (10s)"
+      },
+      "weight": {
+        "label": "Peso",
+        "placeholder": "Quantidade na roleta"
+      },
+      "color": {
+        "label": "Cor"
+      },
+      "submit": {
+        "text": "Adicionar"
+      }
+    }
+  }
+}
