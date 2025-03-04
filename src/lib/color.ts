@@ -5,13 +5,22 @@ export const randomPastelColor = (() => {
     blue: 0,
   };
   return () => {
-    const red = (Math.round(Math.random() * 127) + 100 - tracking.red * 10)
+    const red = (
+      (Math.round(Math.random() * 127) + 100 - tracking.red * 10) %
+      255
+    )
       .toString(16)
       .padStart(2, "0");
-    const green = (Math.round(Math.random() * 127) + 100 - tracking.green * 10)
+    const green = (
+      (Math.round(Math.random() * 127) + 100 - tracking.green * 10) %
+      255
+    )
       .toString(16)
       .padStart(2, "0");
-    const blue = (Math.round(Math.random() * 127) + 100 - tracking.blue * 10)
+    const blue = (
+      (Math.round(Math.random() * 127) + 100 - tracking.blue * 10) %
+      255
+    )
       .toString(16)
       .padStart(2, "0");
 
