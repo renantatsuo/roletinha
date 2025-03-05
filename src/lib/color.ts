@@ -1,38 +1,35 @@
-export const randomPastelColor = (() => {
-  const tracking = {
-    red: 0,
-    green: 0,
-    blue: 0,
+export const randomColor = (() => {
+  const lastColor = {
+    r: 0,
+    g: 0,
+    b: 0,
   };
-  return () => {
-    const red = (
-      (Math.round(Math.random() * 127) + 100 - tracking.red * 10) %
-      255
-    )
+
+  return (): string => {
+    const r = Math.floor(Math.random() * 256)
       .toString(16)
       .padStart(2, "0");
-    const green = (
-      (Math.round(Math.random() * 127) + 100 - tracking.green * 10) %
-      255
-    )
+    const g = Math.floor(Math.random() * 256)
       .toString(16)
       .padStart(2, "0");
-    const blue = (
-      (Math.round(Math.random() * 127) + 100 - tracking.blue * 10) %
-      255
-    )
+    const b = Math.floor(Math.random() * 256)
       .toString(16)
       .padStart(2, "0");
 
-    if (red > green && red > blue) {
-      tracking.red++;
-    } else if (green > red && green > blue) {
-      tracking.green++;
-    } else {
-      tracking.blue++;
+    const distance = Math.sqrt(
+      Math.pow(Number(r) - lastColor.r, 2) +
+        Math.pow(Number(g) - lastColor.g, 2) +
+        Math.pow(Number(b) - lastColor.b, 2)
+    );
+
+    if (distance < 100) {
+      return randomColor();
     }
 
-    return `#${red}${green}${blue}`;
+    lastColor.r = Number(r);
+    lastColor.g = Number(g);
+    lastColor.b = Number(b);
+    return `#${r}${g}${b}`;
   };
 })();
 
