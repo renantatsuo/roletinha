@@ -13,7 +13,7 @@ const prepareItems = (...items: Array<Item>) => {
 };
 
 function App() {
-  const [board, setBoard] = React.useState<Item[]>([]);
+  const [_board, setBoard] = React.useState<Item[]>([]);
   const [items, setItems] = React.useState<Item[]>([]);
 
   const addToBoard = (item: Item) => {
