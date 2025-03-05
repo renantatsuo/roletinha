@@ -1,6 +1,13 @@
 {
   "app": {
-    "title": "Roletinha"
+    "title": "Roletinha",
+    "initialItems": [
+      "Pular corda (30s)",
+      "Assistir Friends",
+      "Flexões (30s)",
+      "1 tequila shot",
+      "$10 give away"
+    ]
   },
   "lastSpinsBoard": {
     "title": "Ultimas roletadas"
@@ -28,5 +35,9 @@
         "text": "Adicionar"
       }
     }
+  },
+  "itemList": {
+    "title": "Lista de itens",
+    "noItems": "Nenhum item"
   }
 }

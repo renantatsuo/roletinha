@@ -16,7 +16,7 @@ bun run dev
 
 ## TO-DO
 
-- [ ] Deploy
+- [x] Deploy
 - [ ] Persistent URL
 - [ ] Export and Import your wheely
 - [ ] OBS overlay

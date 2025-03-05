@@ -1,6 +1,13 @@
 {
   "app": {
-    "title": "Wheely"
+    "title": "Wheely",
+    "initialItems": [
+      "Rope Jumping (30s)",
+      "Watch Friends",
+      "Push Ups (30s)",
+      "1 tequila shot",
+      "$10 give away"
+    ]
   },
   "lastSpinsBoard": {
     "title": "Last spins"
@@ -28,5 +35,9 @@
         "text": "Add"
       }
     }
+  },
+  "itemList": {
+    "title": "Item List",
+    "noItems": "No items"
   }
 }
