@@ -29,10 +29,10 @@ export const LastSpinsBoard = ({ items }: BoardProps) => {
 
   return (
     <div>
-      <h2 className="board-header">{i18n.lastSpinsBoard.title}</h2>
-      <div className="board" ref={ref}>
+      <h2 className="section-header">{i18n.lastSpinsBoard.title}</h2>
+      <div className="last-spins" ref={ref}>
         {items.map((item, index) => (
-          <div key={index} className="board-item">
+          <div key={index} className="last-spins-item">
             {item.label}
           </div>
         ))}

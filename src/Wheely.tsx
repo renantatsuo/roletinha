@@ -1,7 +1,8 @@
+import classNames from "classnames";
 import React from "react";
 import { i18n } from "~/i18n";
 import "./Wheely.css";
-import { getContrastingTextColor } from "./lib/color";
+import { getContrastingTextColor, randomColor } from "./lib/color";
 
 export type Item = {
   label: string;
@@ -14,23 +15,27 @@ type WheelyProps = {
   addToBoard: (item: Item) => void;
 };
 
+const initialItems = i18n.app.initialItems.map((item) => ({
+  label: item,
+  weight: 2,
+  color: randomColor(),
+}));
+
 export const Wheely = ({ items, addToBoard }: WheelyProps) => {
   const [rotation, setRotation] = React.useState(0);
   const [spinning, setSpinning] = React.useState(false);
   const [animateStyles, setAnimateStyles] = React.useState({});
-  const totalCount = items.length;
+  const derivedItems = items.length > 0 ? items : initialItems;
+  const totalCount = derivedItems.length;
   const sliceAngle = 360 / totalCount;
 
-  // wheel dimensions
-  // cx, cy is the center of the wheel
-  // radius is the radius of the wheel
   const cx = 250;
   const cy = 250;
-  const radius = 245;
+  const radius = 235;
 
   const sectors = React.useMemo(() => {
     let startAngle = 0;
-    return items.map((item) => {
+    return derivedItems.map((item) => {
       const delta = (1 / totalCount) * 2 * Math.PI;
       const endAngle = startAngle + delta;
       const midAngle = startAngle + delta / 2;
@@ -57,7 +62,7 @@ export const Wheely = ({ items, addToBoard }: WheelyProps) => {
         labelRotation: startAngle,
       };
     });
-  }, [items, totalCount, cx, cy, radius]);
+  }, [derivedItems, totalCount, cx, cy, radius]);
 
   const handleSpin = () => {
     if (spinning) return;
@@ -77,9 +82,14 @@ export const Wheely = ({ items, addToBoard }: WheelyProps) => {
       setSpinning(false);
       setAnimateStyles({});
       setRotation(finalRotation % 360);
-      addToBoard(items[randomIndex]);
+      addToBoard(derivedItems[randomIndex]);
     }, 8000);
   };
+
+  const wheelClassName = classNames("wheel", {
+    spin: spinning,
+    "initial-spin": items.length === 0,
+  });
 
   // most likely changing this to canvas
   return (
@@ -93,7 +103,7 @@ export const Wheely = ({ items, addToBoard }: WheelyProps) => {
       <svg
         width="500"
         height="500"
-        className={spinning ? "spin" : ""}
+        className={wheelClassName}
         style={
           spinning ? animateStyles : { transform: `rotate(${rotation}deg)` }
         }
@@ -147,7 +157,7 @@ export const Wheely = ({ items, addToBoard }: WheelyProps) => {
       </svg>
       <button
         onClick={handleSpin}
-        disabled={spinning || totalCount === 0}
+        disabled={spinning || items.length === 0}
         className="wheel-button"
       >
         {i18n.wheely.spinButton.text}

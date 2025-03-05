@@ -1,8 +1,7 @@
 import React from "react";
 import "~/App.css";
 import { i18n } from "~/i18n";
-import { LastSpinsBoard } from "~/LastSpinsBoard";
-import { randomPastelColor } from "~/lib/color";
+import { ItemList } from "~/ItemList";
 import { Item, Wheely } from "~/Wheely";
 import { WheelySetup } from "~/WheelySetup";
 
@@ -18,14 +17,15 @@ function App() {
   const [items, setItems] = React.useState<Item[]>([]);
 
   const addToBoard = (item: Item) => {
-    if (item.color === "") {
-      item.color = randomPastelColor();
-    }
     setBoard((board) => [item, ...board]);
   };
 
   const addItem = (item: Item) => {
     setItems((items) => prepareItems(...items, item));
+  };
+
+  const removeItem = (item: Item) => {
+    setItems((items) => items.filter((i) => i.label !== item.label));
   };
 
   return (
@@ -36,7 +36,7 @@ function App() {
       </div>
       <div className="board-wrapper">
         <WheelySetup addItem={addItem} />
-        <LastSpinsBoard items={board} />
+        <ItemList items={items} removeItem={removeItem} />
       </div>
     </div>
   );

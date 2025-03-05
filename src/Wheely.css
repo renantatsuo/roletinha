@@ -2,15 +2,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 530px;
-  width: 530px;
+  height: 500px;
+  width: 500px;
   border-radius: 50%;
   position: relative;
   background: var(--gold-700);
-  background-image: linear-gradient(90deg, transparent 90%, #fff 120%),
-    linear-gradient(180deg, transparent 90%, #fff 120%),
-    linear-gradient(270deg, transparent 90%, #fff 120%),
-    linear-gradient(0deg, transparent 90%, #fff 120%);
+  background-image: linear-gradient(90deg, transparent 90%, var(--white) 120%),
+    linear-gradient(180deg, transparent 90%, var(--white) 120%),
+    linear-gradient(270deg, transparent 90%, var(--white) 120%),
+    linear-gradient(0deg, transparent 90%, var(--white) 120%);
 }
 
 .wheel::after {
@@ -19,8 +19,8 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 40px;
-  height: 50px;
+  width: 30px;
+  height: 40px;
   clip-path: polygon(0% 0%, 0% 20%, 50% 100%, 100% 20%, 100% 0%);
   background: #a80008;
   background-image: linear-gradient(64deg, var(--gold-900) 40%, transparent 0%),
@@ -41,6 +41,7 @@
   box-shadow: inset 0 0 20px 5px #511;
   text-transform: uppercase;
   transition: transform 0.25s;
+  color: var(--white);
 }
 
 .wheel-button:hover:not(:disabled) {
@@ -59,4 +60,22 @@
   animation: spinWheel 8s cubic-bezier(0.05, 0.8, 0.2, 1) forwards;
   transform-box: fill-box;
   transform-origin: center;
+}
+
+@keyframes initialSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.initial-spin {
+  animation: initialSpin 16s infinite linear forwards;
+}
+
+@media (prefers-color-scheme: light) {
+  .wheel {
+    background: var(--black);
+  }
 }

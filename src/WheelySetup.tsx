@@ -2,7 +2,7 @@ import React from "react";
 import { Item } from "~/Wheely";
 import "~/WheelySetup.css";
 import { i18n } from "~/i18n";
-import { randomPastelColor } from "~/lib/color";
+import { randomColor } from "~/lib/color";
 
 type WheelySetupProps = {
   addItem: (item: Item) => void;
@@ -19,7 +19,7 @@ function isItem(item: unknown): item is Item {
 }
 
 export const WheelySetup = ({ addItem }: WheelySetupProps) => {
-  const color = React.useRef(randomPastelColor());
+  const color = React.useRef(randomColor());
   const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -35,7 +35,7 @@ export const WheelySetup = ({ addItem }: WheelySetupProps) => {
     if (label instanceof HTMLInputElement) {
       label.focus();
     }
-    color.current = randomPastelColor();
+    color.current = randomColor();
   };
   return (
     <div>
