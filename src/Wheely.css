@@ -2,8 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 500px;
-  width: 500px;
   border-radius: 50%;
   position: relative;
   background: var(--gold-700);

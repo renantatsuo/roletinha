@@ -10,7 +10,6 @@
   display: flex;
   flex-direction: column;
   background: var(--grey-800);
-  min-width: 340px;
   border-radius: 8px;
   row-gap: 8px;
 }

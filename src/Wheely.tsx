@@ -21,6 +21,13 @@ const initialItems = i18n.app.initialItems.map((item) => ({
   color: randomColor(),
 }));
 
+const calculateWheelSize = (width: number) => {
+  if (width < 768) {
+    return Math.floor(width * 0.8);
+  }
+  return Math.min(Math.floor(width) / 2, 600);
+};
+
 export const Wheely = ({ items, addToBoard }: WheelyProps) => {
   const [rotation, setRotation] = React.useState(0);
   const [spinning, setSpinning] = React.useState(false);
@@ -29,9 +36,11 @@ export const Wheely = ({ items, addToBoard }: WheelyProps) => {
   const totalCount = derivedItems.length;
   const sliceAngle = 360 / totalCount;
 
-  const cx = 250;
-  const cy = 250;
-  const radius = 235;
+  const [wheelSize, setWheelSize] = React.useState(
+    calculateWheelSize(window.innerWidth)
+  );
+  const c = wheelSize / 2;
+  const radius = Math.floor(wheelSize / 2 - 25);
 
   const sectors = React.useMemo(() => {
     let startAngle = 0;
@@ -40,15 +49,15 @@ export const Wheely = ({ items, addToBoard }: WheelyProps) => {
       const endAngle = startAngle + delta;
       const midAngle = startAngle + delta / 2;
       const path = describeArc(
-        cx,
-        cy,
+        c,
+        c,
         radius,
         (startAngle * 180) / Math.PI,
         (endAngle * 180) / Math.PI
       );
       const labelPos = polarToCartesian(
-        cx,
-        cy,
+        c,
+        c,
         radius * 0.7,
         (midAngle * 180) / Math.PI
       );
@@ -62,7 +71,15 @@ export const Wheely = ({ items, addToBoard }: WheelyProps) => {
         labelRotation: startAngle,
       };
     });
-  }, [derivedItems, totalCount, cx, cy, radius]);
+  }, [derivedItems, totalCount, c, radius]);
+
+  React.useEffect(() => {
+    const handleResize = () => {
+      setWheelSize(calculateWheelSize(window.innerWidth));
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const handleSpin = () => {
     if (spinning) return;
@@ -101,8 +118,8 @@ export const Wheely = ({ items, addToBoard }: WheelyProps) => {
       }}
     >
       <svg
-        width="500"
-        height="500"
+        width={wheelSize}
+        height={wheelSize}
         className={wheelClassName}
         style={
           spinning ? animateStyles : { transform: `rotate(${rotation}deg)` }
@@ -112,8 +129,8 @@ export const Wheely = ({ items, addToBoard }: WheelyProps) => {
           {sectors.map((sector, idx) => {
             const innerLabelRadius = radius * 0.25;
             const pos = polarToCartesian(
-              cx,
-              cy,
+              c,
+              c,
               innerLabelRadius,
               sector.midAngleDeg
             );
