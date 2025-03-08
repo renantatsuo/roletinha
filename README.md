@@ -18,6 +18,6 @@ bun run dev
 
 - [x] Deploy
 - [ ] Persistent URL
-- [ ] Export and Import your wheely
+- [x] Export and Import your wheely
 - [ ] OBS overlay
 - [ ] Live stream platforms integrations

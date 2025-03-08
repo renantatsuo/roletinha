@@ -19,6 +19,13 @@
   },
   "wheelySetup": {
     "title": "SETUP WHEEL",
+    "share": {
+      "title": "Share",
+      "import": "Import",
+      "export": "Export",
+      "share": "Share"
+    },
+    "addItems": "Add items",
     "form": {
       "label": {
         "label": "Title",
